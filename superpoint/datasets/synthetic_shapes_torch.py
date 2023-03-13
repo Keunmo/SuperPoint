@@ -112,8 +112,8 @@ class SyntheticShapes(BaseDataset):
         # Parse drawing primitives
         primitives = parse_primitives(config['primitives'], self.drawing_primitives)
 
-        tf.data.Dataset.map_parallel = lambda self, fn: self.map(
-                fn, num_parallel_calls=config['num_parallel_calls'])
+        tf.data.Dataset.map_parallel = lambda self, fn: self.map(fn, num_parallel_calls=config['num_parallel_calls']) 
+        
 
         if config['on-the-fly']:
             return None
@@ -128,7 +128,7 @@ class SyntheticShapes(BaseDataset):
         for primitive in primitives:
             tar_path = Path(basepath, '{}.tar.gz'.format(primitive))
             if not tar_path.exists():
-                self.dump_primitive_data(primitive, tar_path, config)
+                self.dump_primitive_data(primitive, tar_path, config) 
 
             # Untar locally
             tf.logging.info('Extracting archive for primitive {}.'.format(primitive))
